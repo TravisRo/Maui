@@ -136,7 +136,7 @@ public partial class IconTintColorBehavior
 
 		void ApplyTintColor()
 		{
-			if (image.ActualSize != Vector2.Zero)
+			if (image.ActualWidth !=0 && image.ActualHeight !=0)
 			{
 				ApplyImageTintColor(element, image, color);
 			}
@@ -170,8 +170,9 @@ public partial class IconTintColorBehavior
 		image.Width = image.Height = 0;
 
 		// Requested size requires additional offset to re-center tinted image.
-		var requiresAdditionalCenterOffset = element.WidthRequest != -1 || element.HeightRequest != -1;
-		var offset = requiresAdditionalCenterOffset ? new Vector3(width * anchorPoint.X, height * anchorPoint.Y, 0f) : Vector3.Zero;
+		//var requiresAdditionalCenterOffset = element.WidthRequest != -1 || element.HeightRequest != -1;
+		//var offset = requiresAdditionalCenterOffset ? new Vector3(width * anchorPoint.X, height * anchorPoint.Y, 0f) : Vector3.Zero;
+		var offset = new Vector3(width * anchorPoint.X, height * anchorPoint.Y, 0f);
 
 		ApplyTintCompositionEffect(image, color, width, height, offset, anchorPoint, uri);
 	}
